@@ -91,15 +91,15 @@ function scoreTimer() {
 function addHighscore() {
     //get value of initials in input
     var initials = initialsElement.value.trim();
-    //var highscore = JSON.parse(window.localStorage.getItem("highscoreslist"));
+    const storedScores = JSON.parse(window.localStorage.getItem('highscoreslist')) || [];
     var newScore = {
         score: timerCountdown,
         initials: initials,
     };
-    //highscore.push(newScore);
+    storedScores.push(newScore);
     localStorage.setItem("highscoreslist", JSON.stringify(newScore));
 
-    window.location.href = "highscores.html"
+    window.location.href = "highscores.html";
 }
 
 submitButton.addEventListener("click", addHighscore);

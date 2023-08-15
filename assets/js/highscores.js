@@ -1,5 +1,5 @@
 function displayScores () {
-    var scoresToDisplay = JSON.parse(localStorage.getItem('highscoreslist'));
+    var scoresToDisplay = [JSON.parse(localStorage.getItem('highscoreslist'))];
     if (scoresToDisplay !== null) {
         for (var i = 0; i < scoresToDisplay.length; i++) {
             var listTag = document.createElement('li');
