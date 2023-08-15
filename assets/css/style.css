@@ -1,0 +1,27 @@
+:root {
+    --dark-purple: rgba(92, 9, 170, 0.459);
+    --light-purple: rgba(148, 43, 180, 0.459);
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 150%;
+}
+
+.scores a {
+    text-decoration: none;
+    color: var(--dark-purple);
+}
+
+button {
+    display: inline-block;
+    margin: 10px;
+    color: white;
+    background-color: var(--dark-purple);
+    border-radius: 5px;
+    border: none;
+}
+
+button:hover {
+    background-color: var(--light-purple);
+}
