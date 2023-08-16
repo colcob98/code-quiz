@@ -8,7 +8,7 @@ var questionCard = document.getElementById("questions");
 var initialsElement = document.getElementById("initials");
 var submitButton = document.getElementById("submit-button");
 
-//Extra time variable to maintain score/time display even after score is displayed to user
+//Extra time variable to pause and manipulate score/time display even after score is displayed to user
 var timer;
 //Have an inital timer of 100 seconds
 var timerCountdown = 100;
@@ -21,8 +21,9 @@ function startQuiz () {
     document.getElementById("start-screen").hidden = true;
     //show questions template
     document.getElementById("questions").hidden = false;
-    //import questions
+    //start timer
     scoreTimer();
+    //import questions
     getQuestions();
 }
 
@@ -48,10 +49,16 @@ function getQuestions() {
 
 function answerCheck(selectedChoice) {
     var correctAnswer = questions[questionIndex].answer;
-    if (selectedChoice === correctAnswer) {
+    var correctSound = new Audio("assets/audio-and-images/ding-idea-40142.mp3");
+    var incorrectSound = new Audio("assets/audio-and-images/negative_beeps-6008.mp3");
+    if (!selectedChoice && timerCountdown <= 0) {
+        response.textContent = "Time's Up!"   
+    } else if (selectedChoice === correctAnswer) {
+        correctSound.play();
         response.textContent = "Correct!";
     } else {
-        response.textContent = "Wrong!";
+        incorrectSound.play();
+        response.textContent = "Too bad!";
         timerCountdown -= 10;
     }
 
@@ -77,11 +84,15 @@ function scoreTimer() {
         if (questionIndex < questions.length) {
         timerCountdown--;
         }
+        if (timerCountdown <= 0) {
+            clearInterval(timer);
+            answerCheck(null);
+            showResults();
+        }
         timerElement.textContent = timerCountdown;
-        if(timerCountdown <= 0 || questionIndex === questions.length) {
+        if(questionIndex === questions.length) {
             clearInterval(timer);
             showResults();
-
         }
     }, 1000);
 
@@ -97,7 +108,7 @@ function addHighscore() {
         initials: initials,
     };
     storedScores.push(newScore);
-    localStorage.setItem("highscoreslist", JSON.stringify(newScore));
+    localStorage.setItem("highscoreslist", JSON.stringify(storedScores));
 
     window.location.href = "highscores.html";
 }

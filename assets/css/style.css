@@ -8,14 +8,28 @@ body {
     font-size: 150%;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+}
 .scores a {
     text-decoration: none;
     color: var(--dark-purple);
 }
 
+main {
+    margin: 40px;
+    text-align: center;
+}
+
+.choice {
+    display: block;
+}
+
 button {
     display: inline-block;
     margin: 10px;
+    font-size: 100%;
     color: white;
     background-color: var(--dark-purple);
     border-radius: 5px;
@@ -23,5 +37,20 @@ button {
 }
 
 button:hover {
+    background-color: var(--light-purple);
+}
+
+#response {
+    font-style: italic;
+    color: grey;
+}
+/*specific styling for highscores.html*/
+
+li {
+    margin-top: 10px;
+    text-align: left;
+}
+
+li:nth-child(odd) {
     background-color: var(--light-purple);
 }
