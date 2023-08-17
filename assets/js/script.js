@@ -63,7 +63,7 @@ function answerCheck(selectedChoice) {
         response.textContent = "Correct!";
     } else {
         incorrectSound.play();
-        response.textContent = "Too bad!";
+        response.textContent = "Wrong!";
         timerCountdown -= 10;
     }
 
