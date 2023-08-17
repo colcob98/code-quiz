@@ -1,3 +1,4 @@
+//For organization's sake, a seperate JS file with an array of objects, with each object containing a single question
 var questions = [
     {
         question: "Commonly used data types do NOT include: ",

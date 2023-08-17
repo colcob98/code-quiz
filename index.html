@@ -9,12 +9,14 @@
 </head>
 
 <body>
-<header>
-    <section class="scores"><a href="highscores.html">View High Scores</a></section>
-    <section class="timer">Time: <span id="time">100</span></section>
-</header>
+
+    <header>
+        <section class="scores"><a href="highscores.html">View High Scores</a></section>
+        <section class="timer">Time: <span id="time">100</span></section>
+    </header>
 
     <main>
+        <!--What is shown to user upon first loading-->
         <section id="start-screen" class="visible">
         <h1>Code Quiz</h1>
         <p>
@@ -24,16 +26,19 @@
         <button id="start-button">Start</button>
         </section>
 
+        <!--Skeleton of questions to be dynamically rendered later through Javascript-->
         <section id="questions" hidden>
             <h2 id="question"></h2>
             <section id="answer-choices"></section>
         </section>
-
+        
+        <!--Skeleton of responses ie. 'time's up!', 'wrong!', 'correct!' to be dynamically rendered later through Javascript-->
         <section id="response-card" hidden>
             <hr>
             <h2 id="response"></h2>
         </section>
 
+         <!--What is shown to user after completing quiz/time reaches 0-->
         <section id="result-screen" hidden>
             <h2>All done!</h2>
             <p>Your final score is <span id="score-display"></span>.</p>
@@ -44,7 +49,7 @@
         </section>
 
     </main>
-
+    <!--Relevant JavaScript links-->
     <script src="./assets/js/questions.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>

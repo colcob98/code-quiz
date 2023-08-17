@@ -27,12 +27,14 @@ function startQuiz () {
     getQuestions();
 }
 
+// set the questions so that they appear in order
 function getQuestions() {
     var currentQuestion = questions[questionIndex];
     var question = document.getElementById("question");
     question.textContent = currentQuestion.question;
     choices.innerHTML = '';
 
+    //render answer choices 
     for (var i = 0; i < currentQuestion.choices.length; i++) {
         var choice = currentQuestion.choices[i];
         var answerChoices = document.createElement("button");
@@ -47,10 +49,13 @@ function getQuestions() {
     }
 };
 
+// check if the value of selected choice matches that of the question's answer
 function answerCheck(selectedChoice) {
     var correctAnswer = questions[questionIndex].answer;
     var correctSound = new Audio("assets/audio-and-images/ding-idea-40142.mp3");
     var incorrectSound = new Audio("assets/audio-and-images/negative_beeps-6008.mp3");
+
+    // three possible outcomes for three scenarios: no answer when time runs out, correct answer, and wrong answer
     if (!selectedChoice && timerCountdown <= 0) {
         response.textContent = "Time's Up!"   
     } else if (selectedChoice === correctAnswer) {
@@ -62,6 +67,7 @@ function answerCheck(selectedChoice) {
         timerCountdown -= 10;
     }
 
+    //determine whether to display next question or, if no more questions, show results ie 'all done!'
     document.getElementById("response-card").hidden = false;
     questionIndex++;
     if (questionIndex === questions.length) {
@@ -71,6 +77,7 @@ function answerCheck(selectedChoice) {
     }
 }
 
+// when quiz is finished, user has opportunity to enter initials for saving to highscores
 function showResults() {
     questionCard.hidden = true;
     var scoreDisplay = document.getElementById("score-display");
@@ -79,11 +86,13 @@ function showResults() {
     clearInterval(timer);
 }
 
+// timer function to keep track of score/time
 function scoreTimer() {
     var timer = setInterval(function() {
         if (questionIndex < questions.length) {
         timerCountdown--;
         }
+        //needed in the case that user runs out of time (without selecting an answer)
         if (timerCountdown <= 0) {
             clearInterval(timer);
             answerCheck(null);
@@ -102,17 +111,20 @@ function scoreTimer() {
 function addHighscore() {
     //get value of initials in input
     var initials = initialsElement.value.trim();
-    const storedScores = JSON.parse(window.localStorage.getItem('highscoreslist')) || [];
+    //retrive existing or non-existing previous highscores from local storage
+    var existingScores = JSON.parse(window.localStorage.getItem('highscoreslist')) || [];
     var newScore = {
         score: timerCountdown,
         initials: initials,
     };
+    // add to array of highscores
     storedScores.push(newScore);
-    localStorage.setItem("highscoreslist", JSON.stringify(storedScores));
+    // add to local storage
+    localStorage.setItem("highscoreslist", JSON.stringify(existingScores));
 
     window.location.href = "highscores.html";
 }
-
+// Add event listener to submit highscore to local storage
 submitButton.addEventListener("click", addHighscore);
 //Add event listener to begin quiz on click
 startButton.addEventListener("click", startQuiz);
