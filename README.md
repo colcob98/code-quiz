@@ -2,7 +2,7 @@
 
 This web application quizzes students and job applicants on their knowledge of JavaScript fundamentals. With a built-in local storage feature, it is also a great way of comparing the user's progress against peers.
 
-Special attention was given to 
+Special attention was given to Web API functionality to enhance application interactivity.
 
 ## Usage
 
