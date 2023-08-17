@@ -6,9 +6,9 @@ Special attention was given to Web API functionality to enhance application inte
 
 ## Usage
 
-The password generator can be accessed [here](https://colcob98.github.io/code-quiz/index.html).
+The code quiz can be accessed [here](https://colcob98.github.io/code-quiz/index.html).
 
-A preview can be below:
+A preview can be seen below:
 
 ![screenshot](./assets/audio-and-images/colcob98.github.io_code-quiz_index.html.png)
 
@@ -16,9 +16,9 @@ A preview can be below:
 
 Questions and answer choices were received from UNC Bootcamp's example of this project.
 
-Assistance was provided by Learning Assistant Rudie at AskBCS in the function of pushing the user's score to a potentially empty array in local storage.
+Assistance was provided by Learning Assistant Rudie at AskBCS in pushing the user's score to a potentially empty array in local storage.
 
-All sound effects have a CC0 license and are attribute below:
+All sound effects have a CC0 license and are attributed below:
 
 "Ding! idea" - https://pixabay.com/sound-effects/ding-idea-40142/
 
